@@ -1,0 +1,6 @@
+<p>fechas works!</p>
+<label>Fecha Inicio</label>
+<input type="date" [(ngModel)]="fechaObjeto.fechaIn">
+
+<label>Fecha Final</label>
+<input type="date" [(ngModel)]="fechaObjeto.fechaOut" (change)="clickFecha()">
