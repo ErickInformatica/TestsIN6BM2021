@@ -17,12 +17,23 @@ export class FechasComponent implements OnInit {
   }
 
   clickFecha(){
-    console.log(this.fechaObjeto);
+    var verificacion = false
     if(this.fechaObjeto.fechaIn != undefined && this.fechaObjeto.fechaOut != undefined){
-      this.fechasGuardadas.push({
-        fechaIn: this.fechaObjeto.fechaIn,
-        fechaOut: this.fechaObjeto.fechaOut
-      })
+      for (let i = 0; i < this.fechasGuardadas.length; i++) {
+        if(this.fechaObjeto.fechaIn > this.fechasGuardadas[i].fechaIn && this.fechaObjeto.fechaIn < this.fechasGuardadas[i].fechaOut){
+          verificacion = true;
+        }
+      }
+
+      if (verificacion === false) {
+        this.fechasGuardadas.push({
+          fechaIn: this.fechaObjeto.fechaIn,
+          fechaOut: this.fechaObjeto.fechaOut
+        })
+      } else {
+        console.log("No tiene permitido escoger una fecha ya seleccionada");
+      }
+
       console.log(this.fechasGuardadas);
 
       /* var day = new Date(this.fechaInput).getDate()
